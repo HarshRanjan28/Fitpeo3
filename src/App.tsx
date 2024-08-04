@@ -8,7 +8,7 @@ import OrderListContainer from "./components/orderList";
 function App() {
   return (
     <div className="w-full flex">
-      <div className="w-[5%] bg-[#202028]  hidden lg:block">
+      <div className="lg:w-[5%] bg-[#202028] lg:block hidden">
         <Sidebar />
       </div>
       <div className="w-[95%]">

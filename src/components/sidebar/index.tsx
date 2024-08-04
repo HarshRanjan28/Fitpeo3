@@ -1,17 +1,31 @@
 import { IoMdLogOut } from "react-icons/io";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { sideBarMenu } from "../../utils/sideBarMenu";
 import { MdDashboard } from "react-icons/md";
+import { RxCross2 } from "react-icons/rx";
+import useMeasurement from "../../hooks/use-measurement";
 
-const Sidebar = () => {
+interface Prop {
+  setSideBarState: Dispatch<SetStateAction<boolean>>;
+}
+
+const Sidebar = ({ setSideBarState }: Prop) => {
   const [activeMenu, setActiveMenu] = useState("HOME");
-
+  const { isDesktop } = useMeasurement();
   const handleActiveMenu = (menu: string) => {
     setActiveMenu(menu);
   };
-
   return (
     <div className="h-screen sticky top-0">
+      {!isDesktop && (
+        <div>
+          <RxCross2
+            className="text-white text-3xl border-solid border-2 border-white mx-5"
+            onClick={() => setSideBarState(false)}
+          />
+        </div>
+      )}
+
       <div className=" h-1/2 flex flex-col items-center">
         <li
           className="py-5 text-4xl list-none"
@@ -42,6 +56,10 @@ const Sidebar = () => {
       </li>
     </div>
   );
+};
+
+Sidebar.defaultProps = {
+  setSideBarState: false,
 };
 
 export default Sidebar;

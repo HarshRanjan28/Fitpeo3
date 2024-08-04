@@ -6,7 +6,6 @@ const RestaurantInfoStats = () => {
   return (
     <div className="grid lg:grid-cols-4 grid-cols-2 gap-4 w-full lg:w-[70%] justify-between">
       {resInfoStats.map((resInfo) => {
-        console.log(`bg-[${resInfo.bgColor}]`);
         return (
           <div className="flex flex-col justify-between p-5 bg-[#202028] rounded-md  ">
             <div>
